@@ -1,6 +1,7 @@
 package com.grantphillips.sfgdi;
 
 import com.grantphillips.sfgdi.controllers.ConstructorInjectedController;
+import com.grantphillips.sfgdi.controllers.MyController;
 import com.grantphillips.sfgdi.controllers.PropertyInjectedController;
 import com.grantphillips.sfgdi.controllers.SetterInjectedController;
 import org.springframework.boot.SpringApplication;
@@ -12,6 +13,11 @@ public class SfgDiApplication {
 
 	public static void main(String[] args) {
 		ApplicationContext ctx = SpringApplication.run(SfgDiApplication.class, args);
+
+		MyController myController = (MyController) ctx.getBean("myController");
+
+		System.out.println("----- Primary Bean");
+		System.out.println(myController.sayHello());
 
 		System.out.println("----- Setter");
 		SetterInjectedController setterInjectedController = (SetterInjectedController) ctx.getBean("setterInjectedController");
